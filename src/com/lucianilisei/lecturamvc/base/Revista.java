@@ -3,22 +3,22 @@ package com.lucianilisei.lecturamvc.base;
 import java.time.LocalDate;
 
 public class Revista extends Lectura{
-    private int numeroEdicion;
+    private String temaPrincipal;
 
     public Revista() {
         super();
     }
 
-    public Revista(String nombre, String autor, int numPaginas, LocalDate fechaLanzamiento, String editorial, int numeroEdicion) {
-        super(nombre, autor, numPaginas, fechaLanzamiento, editorial);
-        this.numeroEdicion = numeroEdicion;
+    public Revista(String nombre, String autor, int numPaginas, LocalDate fechaLanzamiento, String editorial, String idioma, int numEdicion, boolean disponible, String temaPrincipal) {
+        super(nombre, autor, numPaginas, fechaLanzamiento, editorial, idioma, numEdicion, disponible);
+        this.temaPrincipal = temaPrincipal;
     }
 
-    public int getNumeroEdicion() {
-        return numeroEdicion;
+    public String getTemaPrincipal() {
+        return temaPrincipal;
     }
 
-    public void setNumeroEdicion(int numeroEdicion) {
-        this.numeroEdicion = numeroEdicion;
+    public void setTemaPrincipal(String temaPrincipal) {
+        this.temaPrincipal = temaPrincipal;
     }
 }

@@ -9,8 +9,8 @@ public class Libro extends Lectura{
         super();
     }
 
-    public Libro(String nombre, String autor, int numPaginas, LocalDate fechaLanzamiento, String editorial, double precio) {
-        super(nombre, autor, numPaginas, fechaLanzamiento, editorial);
+    public Libro(String nombre, String autor, int numPaginas, LocalDate fechaLanzamiento, String editorial, String idioma, int numEdicion, boolean disponible, double precio) {
+        super(nombre, autor, numPaginas, fechaLanzamiento, editorial, idioma, numEdicion, disponible);
         this.precio = precio;
     }
 

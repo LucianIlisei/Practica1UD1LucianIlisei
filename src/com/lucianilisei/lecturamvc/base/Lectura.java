@@ -8,17 +8,23 @@ public class Lectura {
     private int numPaginas;
     private LocalDate fechaLanzamiento;
     private String editorial;
+    private String idioma;
+    private int numEdicion;
+    private boolean disponible;
 
     public Lectura() {
 
     }
 
-    public Lectura(String nombre, String autor, int numPaginas, LocalDate fechaLanzamiento, String editorial) {
+    public Lectura(String nombre, String autor, int numPaginas, LocalDate fechaLanzamiento, String editorial, String idioma, int numEdicion, boolean disponible) {
         this.nombre = nombre;
         this.autor = autor;
         this.numPaginas = numPaginas;
         this.fechaLanzamiento = fechaLanzamiento;
         this.editorial = editorial;
+        this.idioma = idioma;
+        this.numEdicion = numEdicion;
+        this.disponible = disponible;
     }
 
     public String getNombre() {
@@ -59,5 +65,29 @@ public class Lectura {
 
     public void setEditorial(String editorial) {
         this.editorial = editorial;
+    }
+
+    public String getIdioma() {
+        return idioma;
+    }
+
+    public void setIdioma(String idioma) {
+        this.idioma = idioma;
+    }
+
+    public int getNumEdicion() {
+        return numEdicion;
+    }
+
+    public void setNumEdicion(int numEdicion) {
+        this.numEdicion = numEdicion;
+    }
+
+    public boolean isDisponible() {
+        return disponible;
+    }
+
+    public void setDisponible(boolean disponible) {
+        this.disponible = disponible;
     }
 }

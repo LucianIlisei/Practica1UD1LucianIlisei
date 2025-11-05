@@ -9,8 +9,8 @@ public class Comic extends Lectura{
         super();
     }
 
-    public Comic(String nombre, String autor, int numPaginas, LocalDate fechaLanzamiento, String editorial, String ilustrador) {
-        super(nombre, autor, numPaginas, fechaLanzamiento, editorial);
+    public Comic(String nombre, String autor, int numPaginas, LocalDate fechaLanzamiento, String editorial, String idioma, int numEdicion, boolean disponible, String ilustrador) {
+        super(nombre, autor, numPaginas, fechaLanzamiento, editorial, idioma, numEdicion, disponible);
         this.ilustrador = ilustrador;
     }
 

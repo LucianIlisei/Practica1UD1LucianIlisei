@@ -9,8 +9,8 @@ public class Manga extends Lectura{
         super();
     }
 
-    public Manga(String nombre, String autor, int numPaginas, LocalDate fechaLanzamiento, String editorial, String paisOrigen) {
-        super(nombre, autor, numPaginas, fechaLanzamiento, editorial);
+    public Manga(String nombre, String autor, int numPaginas, LocalDate fechaLanzamiento, String editorial, String idioma, int numEdicion, boolean disponible, String paisOrigen) {
+        super(nombre, autor, numPaginas, fechaLanzamiento, editorial, idioma, numEdicion, disponible);
         this.paisOrigen = paisOrigen;
     }
 
