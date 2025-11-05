@@ -5,6 +5,10 @@ import java.time.LocalDate;
 public class Revista extends Lectura{
     private int numeroEdicion;
 
+    public Revista() {
+        super();
+    }
+
     public Revista(String nombre, String autor, int numPaginas, LocalDate fechaLanzamiento, String editorial, int numeroEdicion) {
         super(nombre, autor, numPaginas, fechaLanzamiento, editorial);
         this.numeroEdicion = numeroEdicion;

@@ -5,6 +5,10 @@ import java.time.LocalDate;
 public class Libro extends Lectura{
     private double precio;
 
+    public Libro() {
+        super();
+    }
+
     public Libro(String nombre, String autor, int numPaginas, LocalDate fechaLanzamiento, String editorial, double precio) {
         super(nombre, autor, numPaginas, fechaLanzamiento, editorial);
         this.precio = precio;

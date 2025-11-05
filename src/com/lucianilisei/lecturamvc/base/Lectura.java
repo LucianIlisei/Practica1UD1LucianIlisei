@@ -9,6 +9,10 @@ public class Lectura {
     private LocalDate fechaLanzamiento;
     private String editorial;
 
+    public Lectura() {
+
+    }
+
     public Lectura(String nombre, String autor, int numPaginas, LocalDate fechaLanzamiento, String editorial) {
         this.nombre = nombre;
         this.autor = autor;

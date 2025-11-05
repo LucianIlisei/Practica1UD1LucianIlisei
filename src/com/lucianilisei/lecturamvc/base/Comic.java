@@ -5,6 +5,10 @@ import java.time.LocalDate;
 public class Comic extends Lectura{
     private String ilustrador;
 
+    public Comic () {
+        super();
+    }
+
     public Comic(String nombre, String autor, int numPaginas, LocalDate fechaLanzamiento, String editorial, String ilustrador) {
         super(nombre, autor, numPaginas, fechaLanzamiento, editorial);
         this.ilustrador = ilustrador;
