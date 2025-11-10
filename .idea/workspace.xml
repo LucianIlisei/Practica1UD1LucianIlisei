@@ -3,12 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="47f2892c-2b9f-46bd-9a1e-350cea7b9e2f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/lucianilisei/lecturamvc/base/Comic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/lucianilisei/lecturamvc/base/Comic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/lucianilisei/lecturamvc/base/Lectura.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/lucianilisei/lecturamvc/base/Lectura.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/lucianilisei/lecturamvc/base/Libro.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/lucianilisei/lecturamvc/base/Libro.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/lucianilisei/lecturamvc/base/Manga.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/lucianilisei/lecturamvc/base/Manga.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/lucianilisei/lecturamvc/base/Poesia.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/lucianilisei/lecturamvc/base/Poesia.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/lucianilisei/lecturamvc/base/Revista.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/lucianilisei/lecturamvc/base/Revista.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Practica1UD1LucianIlisei/com/lucianilisei/lecturamvc/Principal.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Practica1UD1LucianIlisei/com/lucianilisei/lecturamvc/gui/Ventana.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Practica1UD1LucianIlisei/com/lucianilisei/lecturamvc/gui/Ventana.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Principal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Principal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/lucianilisei/lecturamvc/gui/LecturasModelo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/lucianilisei/lecturamvc/gui/LecturasModelo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/lucianilisei/lecturamvc/gui/Ventana.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/lucianilisei/lecturamvc/gui/Ventana.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/lucianilisei/lecturamvc/gui/Ventana.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/lucianilisei/lecturamvc/gui/Ventana.java" afterDir="false" />
     </list>
@@ -38,6 +36,7 @@
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -51,7 +50,14 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Principal (1)">
+    <configuration name="Principal (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Principal" />
+      <module name="Practica1UD1LucianIlisei" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Principal" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.lucianilisei.lecturamvc.Principal" />
       <module name="Practica1UD1LucianIlisei" />
@@ -67,6 +73,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Principal (1)" />
         <item itemvalue="Application.Principal" />
       </list>
     </recent_temporary>
@@ -87,6 +94,8 @@
       <workItem from="1762239975247" duration="18000" />
       <workItem from="1762333178861" duration="1453000" />
       <workItem from="1762334683586" duration="5842000" />
+      <workItem from="1762694052467" duration="1217000" />
+      <workItem from="1762792890985" duration="7294000" />
     </task>
     <servers />
   </component>

@@ -1,6 +1,7 @@
 package com.lucianilisei.lecturamvc.gui;
 
 import com.github.lgooddatepicker.components.DatePicker;
+import com.lucianilisei.lecturamvc.base.Lectura;
 
 import javax.swing.*;
 
@@ -15,9 +16,9 @@ public class Ventana {
     public JTextField campoAutor;
     public JTextField campoEditorial;
     public DatePicker datePicker;
-    public JComboBox comboBox1;
-    public JRadioButton siRadioButton;
-    public JRadioButton noRadioButton;
+    public JComboBox comboIdiomas;
+    public JRadioButton siDisponibleRadioButton;
+    public JRadioButton noDisponibleRadioButton;
     public JButton botonNuevo;
     public JButton botonExportar;
     public JButton botonImportar;
@@ -28,6 +29,8 @@ public class Ventana {
 
 
     public JFrame frame;
+    public DefaultListModel<Lectura> dlmLectura;
+
     public Ventana() {
         frame = new JFrame("LecturaMVC");
         frame.setContentPane(panel1);
@@ -35,5 +38,12 @@ public class Ventana {
         frame.pack();
         frame.setVisible(true);
         frame.setLocationRelativeTo(null);
+
+        initComponents();
+    }
+
+    private void initComponents() {
+        dlmLectura = new DefaultListModel<Lectura>();
+        list1.setModel(dlmLectura);
     }
 }

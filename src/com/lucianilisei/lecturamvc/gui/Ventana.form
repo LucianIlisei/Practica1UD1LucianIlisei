@@ -139,7 +139,7 @@
           <forms/>
         </constraints>
         <properties>
-          <text value="editorial"/>
+          <text value="Editorial"/>
         </properties>
       </component>
       <component id="fe7da" class="javax.swing.JTextField" binding="campoNombre">
@@ -185,7 +185,7 @@
           <text value="Idioma"/>
         </properties>
       </component>
-      <component id="a90ff" class="javax.swing.JComboBox" binding="comboBox1" default-binding="true">
+      <component id="a90ff" class="javax.swing.JComboBox" binding="comboIdiomas">
         <constraints>
           <grid row="12" column="2" row-span="1" col-span="3" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
           <forms/>
@@ -210,7 +210,7 @@
           <text value="Disponible"/>
         </properties>
       </component>
-      <component id="c13f7" class="javax.swing.JRadioButton" binding="siRadioButton" default-binding="true">
+      <component id="c13f7" class="javax.swing.JRadioButton" binding="siDisponibleRadioButton">
         <constraints>
           <grid row="16" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
           <forms/>
@@ -219,7 +219,7 @@
           <text value="Si"/>
         </properties>
       </component>
-      <component id="4cd43" class="javax.swing.JRadioButton" binding="noRadioButton" default-binding="true">
+      <component id="4cd43" class="javax.swing.JRadioButton" binding="noDisponibleRadioButton">
         <constraints>
           <grid row="16" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
           <forms/>
