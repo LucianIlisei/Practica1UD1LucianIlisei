@@ -1,6 +1,6 @@
 package com.lucianilisei.lecturamvc.gui;
 
-import com.lucianilisei.lecturamvc.base.Lectura;
+import com.lucianilisei.lecturamvc.base.*;
 
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -51,6 +51,46 @@ public class LecturasControlador implements ActionListener, WindowListener, List
     }
 
     @Override
+    public void valueChanged(ListSelectionEvent e) {
+        if(e.getValueIsAdjusting()) {
+            Lectura lecturaSeleccionada = (Lectura) vista.list1.getSelectedValue();
+            vista.campoNombre.setText(lecturaSeleccionada.getNombre());
+            vista.campoAutor.setText(lecturaSeleccionada.getAutor());
+            vista.SpinnerNumPag.setValue(lecturaSeleccionada.getNumPaginas());
+            vista.datePicker.setDate(lecturaSeleccionada.getFechaLanzamiento());
+            vista.campoEditorial.setText(lecturaSeleccionada.getEditorial());
+            vista.comboIdiomas.setSelectedItem(lecturaSeleccionada.getIdioma());
+            vista.spinnerNumEdicion.setValue(lecturaSeleccionada.getNumEdicion());
+            if (lecturaSeleccionada.isDisponible()) {
+                vista.siDisponibleRadioButton.setSelected(true);
+            } else {
+                vista.noDisponibleRadioButton.setSelected(true);
+            }
+            if (lecturaSeleccionada instanceof Libro) {
+                vista.radioLibro.doClick();
+                vista.labelGeneral.setText("Precio");
+                vista.campoGeneral.setText(String.valueOf(((Libro) lecturaSeleccionada).getPrecio()));
+            } else if (lecturaSeleccionada instanceof Comic) {
+                vista.radioComic.doClick();
+                vista.labelGeneral.setText("Ilustrador");
+                vista.campoGeneral.setText(((Comic) lecturaSeleccionada).getIlustrador());
+            } else if (lecturaSeleccionada instanceof Manga) {
+                vista.radioManga.doClick();
+                vista.labelGeneral.setText("Pais de origen");
+                vista.campoGeneral.setText(((Manga) lecturaSeleccionada).getPaisOrigen());
+            } else if (lecturaSeleccionada instanceof Poesia) {
+                vista.radioPoesia.doClick();
+                vista.labelGeneral.setText("Estilo");
+                vista.campoGeneral.setText(((Poesia) lecturaSeleccionada).getEstilo());
+            } else if (lecturaSeleccionada instanceof Revista) {
+                vista.radioRevista.doClick();
+                vista.labelGeneral.setText("Tema principal");
+                vista.campoGeneral.setText(((Revista) lecturaSeleccionada).getTemaPrincipal());
+            }
+        }
+    }
+
+    @Override
     public void actionPerformed(ActionEvent actionEvent) {
 
     }
@@ -87,11 +127,6 @@ public class LecturasControlador implements ActionListener, WindowListener, List
 
     @Override
     public void windowDeactivated(WindowEvent windowEvent) {
-
-    }
-
-    @Override
-    public void valueChanged(ListSelectionEvent listSelectionEvent) {
 
     }
 }

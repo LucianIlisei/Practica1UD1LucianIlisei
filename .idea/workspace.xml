@@ -4,10 +4,10 @@
     <list default="true" id="47f2892c-2b9f-46bd-9a1e-350cea7b9e2f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Practica1UD1LucianIlisei/com/lucianilisei/lecturamvc/gui/LecturasControlador.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Practica1UD1LucianIlisei/com/lucianilisei/lecturamvc/gui/LecturasControlador.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Practica1UD1LucianIlisei/com/lucianilisei/lecturamvc/gui/LecturasModelo.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Practica1UD1LucianIlisei/com/lucianilisei/lecturamvc/gui/LecturasModelo.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Practica1UD1LucianIlisei/com/lucianilisei/lecturamvc/gui/Ventana.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Practica1UD1LucianIlisei/com/lucianilisei/lecturamvc/gui/Ventana.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Principal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Principal.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/lucianilisei/lecturamvc/gui/LecturasControlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/lucianilisei/lecturamvc/gui/LecturasControlador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/lucianilisei/lecturamvc/gui/LecturasModelo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/lucianilisei/lecturamvc/gui/LecturasModelo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/lucianilisei/lecturamvc/gui/Ventana.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/lucianilisei/lecturamvc/gui/Ventana.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/lucianilisei/lecturamvc/gui/Ventana.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/lucianilisei/lecturamvc/gui/Ventana.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -15,6 +15,20 @@
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">

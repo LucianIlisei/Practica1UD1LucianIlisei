@@ -40,7 +40,9 @@
     <constraints>
       <xy x="20" y="20" width="537" height="526"/>
     </constraints>
-    <properties/>
+    <properties>
+      <visible value="true"/>
+    </properties>
     <border type="none"/>
     <children>
       <component id="ce545" class="javax.swing.JLabel">
@@ -149,7 +151,9 @@
           </grid>
           <forms defaultalign-horz="false"/>
         </constraints>
-        <properties/>
+        <properties>
+          <name value="NOMBRE"/>
+        </properties>
       </component>
       <component id="24146" class="javax.swing.JTextField" binding="campoAutor">
         <constraints>
@@ -158,14 +162,18 @@
           </grid>
           <forms defaultalign-horz="false"/>
         </constraints>
-        <properties/>
+        <properties>
+          <name value="AUTOR"/>
+        </properties>
       </component>
       <component id="ad54f" class="com.github.lgooddatepicker.components.DatePicker" binding="datePicker">
         <constraints>
           <grid row="8" column="2" row-span="1" col-span="9" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
           <forms/>
         </constraints>
-        <properties/>
+        <properties>
+          <name value="FECHA DE LANZAMIENTO"/>
+        </properties>
       </component>
       <component id="ecbe4" class="javax.swing.JTextField" binding="campoEditorial">
         <constraints>
@@ -174,7 +182,9 @@
           </grid>
           <forms defaultalign-horz="false"/>
         </constraints>
-        <properties/>
+        <properties>
+          <name value="EDITORIAL"/>
+        </properties>
       </component>
       <component id="af515" class="javax.swing.JLabel">
         <constraints>
@@ -190,7 +200,9 @@
           <grid row="12" column="2" row-span="1" col-span="3" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
           <forms/>
         </constraints>
-        <properties/>
+        <properties>
+          <name value="IDIOMA"/>
+        </properties>
       </component>
       <component id="70119" class="javax.swing.JLabel">
         <constraints>
@@ -216,6 +228,7 @@
           <forms/>
         </constraints>
         <properties>
+          <name value="SI"/>
           <text value="Si"/>
         </properties>
       </component>
@@ -225,10 +238,11 @@
           <forms/>
         </constraints>
         <properties>
+          <name value="NO"/>
           <text value="No"/>
         </properties>
       </component>
-      <component id="41582" class="javax.swing.JLabel">
+      <component id="41582" class="javax.swing.JLabel" binding="labelGeneral">
         <constraints>
           <grid row="18" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
           <forms/>
@@ -269,21 +283,18 @@
           <grid row="14" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
           <forms defaultalign-horz="false"/>
         </constraints>
-        <properties/>
+        <properties>
+          <name value="NUMERO EDICION"/>
+        </properties>
       </component>
       <component id="21198" class="javax.swing.JSpinner" binding="SpinnerNumPag">
         <constraints>
           <grid row="6" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
           <forms defaultalign-horz="false"/>
         </constraints>
-        <properties/>
-      </component>
-      <component id="7e4fe" class="javax.swing.JSpinner" binding="spinnerPrecio">
-        <constraints>
-          <grid row="18" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
-          <forms defaultalign-horz="false"/>
-        </constraints>
-        <properties/>
+        <properties>
+          <name value="NUMERO PÁGINAS"/>
+        </properties>
       </component>
       <scrollpane id="474a7">
         <constraints>
@@ -299,6 +310,15 @@
           </component>
         </children>
       </scrollpane>
+      <component id="1a31f" class="javax.swing.JTextField" binding="campoGeneral">
+        <constraints>
+          <grid row="18" column="2" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+          <forms defaultalign-horz="false"/>
+        </constraints>
+        <properties/>
+      </component>
     </children>
   </grid>
   <buttonGroups>

@@ -1,9 +1,12 @@
 package com.lucianilisei.lecturamvc.gui;
 
 import com.github.lgooddatepicker.components.DatePicker;
+import com.lucianilisei.lecturamvc.base.Comic;
 import com.lucianilisei.lecturamvc.base.Lectura;
+import com.lucianilisei.lecturamvc.base.Libro;
 
 import javax.swing.*;
+import java.time.LocalDate;
 
 public class Ventana {
     private JPanel panel1;
@@ -24,8 +27,9 @@ public class Ventana {
     public JButton botonImportar;
     public JSpinner spinnerNumEdicion;
     public JSpinner SpinnerNumPag;
-    public JSpinner spinnerPrecio;
     public JList list1;
+    public JTextField campoGeneral;
+    public JLabel labelGeneral;
 
 
     public JFrame frame;
@@ -45,5 +49,20 @@ public class Ventana {
     private void initComponents() {
         dlmLectura = new DefaultListModel<Lectura>();
         list1.setModel(dlmLectura);
+
+        Lectura libro1 = new Libro("El Quijote", "Cervantes", 500,
+                LocalDate.of(1605, 1, 16), "Francisco de Robles", "Español", 1, true, 19.99);
+
+        Lectura comic1 = new Comic("Spiderman", "Stan Lee", 120,
+                LocalDate.of(1962, 8, 1), "Marvel", "Inglés", 1, false, "Steve Ditko");
+
+        dlmLectura.addElement(libro1);
+        dlmLectura.addElement(comic1);
+
+
+        String [] idiomas = {"Español", "Inglés", "Francés"};
+        for (String idioma: idiomas) {
+            comboIdiomas.addItem(idioma);
+        }
     }
 }
