@@ -1,10 +1,8 @@
 package com.lucianilisei.lecturamvc.gui;
 
 import com.lucianilisei.lecturamvc.base.*;
-import org.w3c.dom.DOMImplementation;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Text;
+import org.w3c.dom.*;
+import org.xml.sax.SAXException;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -13,6 +11,7 @@ import javax.xml.transform.*;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.File;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -175,4 +174,81 @@ public class LecturasModelo {
         transformer.transform(source, resultado);
 
     }
+
+    public void importarXML(File fichero) throws ParserConfigurationException, IOException, SAXException {
+        listaLectura = new ArrayList<Lectura>();
+        Libro nuevoLibro = null;
+        Comic nuevoComic = null;
+        Manga nuevoManga = null;
+        Poesia nuevaPoesia = null;
+        Revista nuevaRevista = null;
+
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder builder = factory.newDocumentBuilder();
+        Document documento = builder.parse(fichero);
+
+        NodeList listaElementos = documento.getElementsByTagName("*");
+
+        for(int i = 0; i < listaElementos.getLength(); i++) {
+            Element nodoLectura = (Element) listaElementos.item(i);
+
+            if (nodoLectura.getTagName().equals("Libro")) {
+                nuevoLibro = new Libro();
+                nuevoLibro.setNombre(nodoLectura.getChildNodes().item(0).getTextContent());
+                nuevoLibro.setAutor(nodoLectura.getChildNodes().item(1).getTextContent());
+                nuevoLibro.setNumPaginas(Integer.parseInt(nodoLectura.getChildNodes().item(2).getTextContent()));
+                nuevoLibro.setFechaLanzamiento(LocalDate.parse(nodoLectura.getChildNodes().item(3).getTextContent()));
+                nuevoLibro.setEditorial(nodoLectura.getChildNodes().item(4).getTextContent());
+                nuevoLibro.setIdioma(nodoLectura.getChildNodes().item(5).getTextContent());
+                nuevoLibro.setNumEdicion(Integer.parseInt(nodoLectura.getChildNodes().item(6).getTextContent()));
+                nuevoLibro.setDisponible(Boolean.parseBoolean(nodoLectura.getChildNodes().item(7).getTextContent()));
+                nuevoLibro.setPrecio(Double.parseDouble(nodoLectura.getChildNodes().item(8).getTextContent()));
+            } else if (nodoLectura.getTagName().equals("Comic")) {
+                nuevoComic = new Comic();
+                nuevoComic.setNombre(nodoLectura.getChildNodes().item(0).getTextContent());
+                nuevoComic.setAutor(nodoLectura.getChildNodes().item(1).getTextContent());
+                nuevoComic.setNumPaginas(Integer.parseInt(nodoLectura.getChildNodes().item(2).getTextContent()));
+                nuevoComic.setFechaLanzamiento(LocalDate.parse(nodoLectura.getChildNodes().item(3).getTextContent()));
+                nuevoComic.setEditorial(nodoLectura.getChildNodes().item(4).getTextContent());
+                nuevoComic.setIdioma(nodoLectura.getChildNodes().item(5).getTextContent());
+                nuevoComic.setNumEdicion(Integer.parseInt(nodoLectura.getChildNodes().item(6).getTextContent()));
+                nuevoComic.setDisponible(Boolean.parseBoolean(nodoLectura.getChildNodes().item(7).getTextContent()));
+                nuevoComic.setIlustrador(nodoLectura.getChildNodes().item(8).getTextContent());
+            } else if (nodoLectura.getTagName().equals("Manga")) {
+                nuevoManga = new Manga();
+                nuevoManga.setNombre(nodoLectura.getChildNodes().item(0).getTextContent());
+                nuevoManga.setAutor(nodoLectura.getChildNodes().item(1).getTextContent());
+                nuevoManga.setNumPaginas(Integer.parseInt(nodoLectura.getChildNodes().item(2).getTextContent()));
+                nuevoManga.setFechaLanzamiento(LocalDate.parse(nodoLectura.getChildNodes().item(3).getTextContent()));
+                nuevoManga.setEditorial(nodoLectura.getChildNodes().item(4).getTextContent());
+                nuevoManga.setIdioma(nodoLectura.getChildNodes().item(5).getTextContent());
+                nuevoManga.setNumEdicion(Integer.parseInt(nodoLectura.getChildNodes().item(6).getTextContent()));
+                nuevoManga.setDisponible(Boolean.parseBoolean(nodoLectura.getChildNodes().item(7).getTextContent()));
+                nuevoManga.setPaisOrigen(nodoLectura.getChildNodes().item(8).getTextContent());
+            } else if (nodoLectura.getTagName().equals("Poesia")) {
+                nuevaPoesia = new Poesia();
+                nuevaPoesia.setNombre(nodoLectura.getChildNodes().item(0).getTextContent());
+                nuevaPoesia.setAutor(nodoLectura.getChildNodes().item(1).getTextContent());
+                nuevaPoesia.setNumPaginas(Integer.parseInt(nodoLectura.getChildNodes().item(2).getTextContent()));
+                nuevaPoesia.setFechaLanzamiento(LocalDate.parse(nodoLectura.getChildNodes().item(3).getTextContent()));
+                nuevaPoesia.setEditorial(nodoLectura.getChildNodes().item(4).getTextContent());
+                nuevaPoesia.setIdioma(nodoLectura.getChildNodes().item(5).getTextContent());
+                nuevaPoesia.setNumEdicion(Integer.parseInt(nodoLectura.getChildNodes().item(6).getTextContent()));
+                nuevaPoesia.setDisponible(Boolean.parseBoolean(nodoLectura.getChildNodes().item(7).getTextContent()));
+                nuevaPoesia.setEstilo(nodoLectura.getChildNodes().item(8).getTextContent());
+            } else if (nodoLectura.getTagName().equals("Revista")) {
+                nuevaRevista = new Revista();
+                nuevaRevista.setNombre(nodoLectura.getChildNodes().item(0).getTextContent());
+                nuevaRevista.setAutor(nodoLectura.getChildNodes().item(1).getTextContent());
+                nuevaRevista.setNumPaginas(Integer.parseInt(nodoLectura.getChildNodes().item(2).getTextContent()));
+                nuevaRevista.setFechaLanzamiento(LocalDate.parse(nodoLectura.getChildNodes().item(3).getTextContent()));
+                nuevaRevista.setEditorial(nodoLectura.getChildNodes().item(4).getTextContent());
+                nuevaRevista.setIdioma(nodoLectura.getChildNodes().item(5).getTextContent());
+                nuevaRevista.setNumEdicion(Integer.parseInt(nodoLectura.getChildNodes().item(6).getTextContent()));
+                nuevaRevista.setDisponible(Boolean.parseBoolean(nodoLectura.getChildNodes().item(7).getTextContent()));
+                nuevaRevista.setTemaPrincipal(nodoLectura.getChildNodes().item(8).getTextContent());
+            }
+        }
+    }
+
 }
