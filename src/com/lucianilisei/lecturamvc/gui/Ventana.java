@@ -25,7 +25,7 @@ public class Ventana {
     public JSpinner spinnerNumEdicion;
     public JSpinner SpinnerNumPag;
     public JSpinner spinnerPrecio;
-    private JList list1;
+    public JList list1;
 
 
     public JFrame frame;

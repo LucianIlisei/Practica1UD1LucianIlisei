@@ -203,6 +203,7 @@ public class LecturasModelo {
                 nuevoLibro.setNumEdicion(Integer.parseInt(nodoLectura.getChildNodes().item(6).getTextContent()));
                 nuevoLibro.setDisponible(Boolean.parseBoolean(nodoLectura.getChildNodes().item(7).getTextContent()));
                 nuevoLibro.setPrecio(Double.parseDouble(nodoLectura.getChildNodes().item(8).getTextContent()));
+                listaLectura.add(nuevoLibro);
             } else if (nodoLectura.getTagName().equals("Comic")) {
                 nuevoComic = new Comic();
                 nuevoComic.setNombre(nodoLectura.getChildNodes().item(0).getTextContent());
@@ -214,6 +215,7 @@ public class LecturasModelo {
                 nuevoComic.setNumEdicion(Integer.parseInt(nodoLectura.getChildNodes().item(6).getTextContent()));
                 nuevoComic.setDisponible(Boolean.parseBoolean(nodoLectura.getChildNodes().item(7).getTextContent()));
                 nuevoComic.setIlustrador(nodoLectura.getChildNodes().item(8).getTextContent());
+                listaLectura.add(nuevoComic);
             } else if (nodoLectura.getTagName().equals("Manga")) {
                 nuevoManga = new Manga();
                 nuevoManga.setNombre(nodoLectura.getChildNodes().item(0).getTextContent());
@@ -225,6 +227,7 @@ public class LecturasModelo {
                 nuevoManga.setNumEdicion(Integer.parseInt(nodoLectura.getChildNodes().item(6).getTextContent()));
                 nuevoManga.setDisponible(Boolean.parseBoolean(nodoLectura.getChildNodes().item(7).getTextContent()));
                 nuevoManga.setPaisOrigen(nodoLectura.getChildNodes().item(8).getTextContent());
+                listaLectura.add(nuevoManga);
             } else if (nodoLectura.getTagName().equals("Poesia")) {
                 nuevaPoesia = new Poesia();
                 nuevaPoesia.setNombre(nodoLectura.getChildNodes().item(0).getTextContent());
@@ -236,6 +239,7 @@ public class LecturasModelo {
                 nuevaPoesia.setNumEdicion(Integer.parseInt(nodoLectura.getChildNodes().item(6).getTextContent()));
                 nuevaPoesia.setDisponible(Boolean.parseBoolean(nodoLectura.getChildNodes().item(7).getTextContent()));
                 nuevaPoesia.setEstilo(nodoLectura.getChildNodes().item(8).getTextContent());
+                listaLectura.add(nuevaPoesia);
             } else if (nodoLectura.getTagName().equals("Revista")) {
                 nuevaRevista = new Revista();
                 nuevaRevista.setNombre(nodoLectura.getChildNodes().item(0).getTextContent());
@@ -247,6 +251,7 @@ public class LecturasModelo {
                 nuevaRevista.setNumEdicion(Integer.parseInt(nodoLectura.getChildNodes().item(6).getTextContent()));
                 nuevaRevista.setDisponible(Boolean.parseBoolean(nodoLectura.getChildNodes().item(7).getTextContent()));
                 nuevaRevista.setTemaPrincipal(nodoLectura.getChildNodes().item(8).getTextContent());
+                listaLectura.add(nuevaRevista);
             }
         }
     }
