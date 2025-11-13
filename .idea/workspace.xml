@@ -3,16 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="47f2892c-2b9f-46bd-9a1e-350cea7b9e2f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Practica1UD1LucianIlisei/Principal.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Practica1UD1LucianIlisei/Principal.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Practica1UD1LucianIlisei/com/lucianilisei/lecturamvc/gui/LecturasControlador.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Practica1UD1LucianIlisei/com/lucianilisei/lecturamvc/gui/LecturasControlador.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/lucianilisei/lecturamvc/base/Comic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/lucianilisei/lecturamvc/base/Comic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/lucianilisei/lecturamvc/base/Lectura.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/lucianilisei/lecturamvc/base/Lectura.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/lucianilisei/lecturamvc/base/Libro.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/lucianilisei/lecturamvc/base/Libro.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/lucianilisei/lecturamvc/base/Manga.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/lucianilisei/lecturamvc/base/Manga.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/lucianilisei/lecturamvc/base/Poesia.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/lucianilisei/lecturamvc/base/Poesia.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/lucianilisei/lecturamvc/base/Revista.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/lucianilisei/lecturamvc/base/Revista.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Principal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Principal.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/lucianilisei/lecturamvc/gui/LecturasControlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/lucianilisei/lecturamvc/gui/LecturasControlador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/lucianilisei/lecturamvc/gui/LecturasModelo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/lucianilisei/lecturamvc/gui/LecturasModelo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/lucianilisei/lecturamvc/gui/Ventana.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/lucianilisei/lecturamvc/gui/Ventana.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/lucianilisei/lecturamvc/gui/Ventana.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/lucianilisei/lecturamvc/gui/Ventana.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -20,6 +14,11 @@
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution>
+      <executable />
+    </execution>
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -115,7 +114,10 @@
       <workItem from="1762334683586" duration="5842000" />
       <workItem from="1762694052467" duration="1217000" />
       <workItem from="1762792890985" duration="7294000" />
-      <workItem from="1763021748319" duration="5521000" />
+      <workItem from="1763021748319" duration="5589000" />
+      <workItem from="1763028573202" duration="154000" />
+      <workItem from="1763030328883" duration="5324000" />
+      <workItem from="1763036957066" duration="1232000" />
     </task>
     <servers />
   </component>

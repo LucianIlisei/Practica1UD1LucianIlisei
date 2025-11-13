@@ -1,23 +1,31 @@
 package com.lucianilisei.lecturamvc.gui;
 
 import com.lucianilisei.lecturamvc.base.*;
+import com.lucianilisei.lecturamvc.util.Utilidades;
+import org.xml.sax.SAXException;
 
+import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.TransformerException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
-import java.io.File;
+import java.io.*;
+import java.util.Properties;
 
 public class LecturasControlador implements ActionListener, WindowListener, ListSelectionListener{
     private Ventana vista;
     private LecturasModelo modelo;
+    private Utilidades utilidades;
     private File ultimaRutaExportada;
 
-    public LecturasControlador(Ventana vista, LecturasModelo modelo) {
+    public LecturasControlador(Ventana vista, LecturasModelo modelo, Utilidades utilidades) {
         this.vista = vista;
         this.modelo = modelo;
+        this.utilidades = utilidades;
 
         addActionListener(this);
         addWindowListener(this);
@@ -43,11 +51,20 @@ public class LecturasControlador implements ActionListener, WindowListener, List
         vista.list1.addListSelectionListener(listener);
     }
 
-    private void refrescar() {
-        vista.dlmLectura.clear();
-        for (Lectura lectura: modelo.obtenerLecturas()) {
-            vista.dlmLectura.addElement(lectura);
-        }
+    private void guardarConfiguracion() throws IOException {
+        Properties configuracion = new Properties();
+        configuracion.setProperty("ultimaRutaExportada", ultimaRutaExportada.getAbsolutePath());
+        configuracion.store(new PrintWriter("lecturas.conf"), "Datos configuración lecturas");
+    }
+
+    private void cargarDatosConfiguracion() throws IOException {
+        Properties configuracion = new Properties();
+        configuracion.load(new FileReader("lecturas.conf"));
+        ultimaRutaExportada = new File(configuracion.getProperty("ultimaRutaExportada"));
+    }
+
+    private void actualizarDatosConfiguracion(File ultimaRutaExportada) {
+        this.ultimaRutaExportada = ultimaRutaExportada;
     }
 
     @Override
@@ -95,26 +112,6 @@ public class LecturasControlador implements ActionListener, WindowListener, List
         String actionComand = e.getActionCommand();
         System.out.println("Botón pulsado: " + actionComand);
         switch (actionComand) {
-            case "Nuevo":
-                String disponible = vista.siDisponibleRadioButton.isSelected() ? "Si" : "No";
-                if (vista.radioLibro.isSelected()) {
-                    modelo.altaLibro(vista.campoNombre.getText(), vista.campoAutor.getText(), (int) (vista.SpinnerNumPag.getValue()), vista.datePicker.getDate(), vista.campoEditorial.getText(),
-                            vista.comboIdiomas.getSelectedItem().toString(), (int) vista.spinnerNumEdicion.getValue(), disponible, vista.campoGeneral.getText());
-                } else if (vista.radioComic.isSelected()) {
-                    modelo.altaComic(vista.campoNombre.getText(), vista.campoAutor.getText(), (int) (vista.SpinnerNumPag.getValue()), vista.datePicker.getDate(), vista.campoEditorial.getText(),
-                            vista.comboIdiomas.getSelectedItem().toString(), (int) vista.spinnerNumEdicion.getValue(), disponible, vista.campoGeneral.getText());
-                } else if (vista.radioManga.isSelected()) {
-                    modelo.altaManga(vista.campoNombre.getText(), vista.campoAutor.getText(), (int) (vista.SpinnerNumPag.getValue()), vista.datePicker.getDate(), vista.campoEditorial.getText(),
-                            vista.comboIdiomas.getSelectedItem().toString(), (int) vista.spinnerNumEdicion.getValue(), disponible, vista.campoGeneral.getText());
-                } else if (vista.radioPoesia.isSelected()) {
-                    modelo.altaPoesia(vista.campoNombre.getText(), vista.campoAutor.getText(), (int) (vista.SpinnerNumPag.getValue()), vista.datePicker.getDate(), vista.campoEditorial.getText(),
-                            vista.comboIdiomas.getSelectedItem().toString(), (int) vista.spinnerNumEdicion.getValue(), disponible, vista.campoGeneral.getText());
-                } else if (vista.radioRevista.isSelected()) {
-                    modelo.altaRevista(vista.campoNombre.getText(), vista.campoAutor.getText(), (int) (vista.SpinnerNumPag.getValue()), vista.datePicker.getDate(), vista.campoEditorial.getText(),
-                            vista.comboIdiomas.getSelectedItem().toString(), (int) vista.spinnerNumEdicion.getValue(), disponible, vista.campoGeneral.getText());
-                }
-
-                refrescar();
             case "Libro":
                 vista.labelGeneral.setText("Género");
                 vista.campoGeneral.setName("LIBRO");
@@ -126,16 +123,128 @@ public class LecturasControlador implements ActionListener, WindowListener, List
             case "Manga":
                 vista.labelGeneral.setText("Pais de origen");
                 vista.campoGeneral.setName("PAIS DE ORIGEN");
+                break;
             case "Poesia":
                 vista.labelGeneral.setText("Estilo");
                 vista.campoGeneral.setName("ESTILO");
+                break;
             case "Revista":
                 vista.labelGeneral.setText("Tema principal");
                 vista.campoGeneral.setName("TEMA PRINCIPAL");
+                break;
+            case "Nuevo":
+                if (utilidades.campoVacio(vista.campoNombre)) {
+                    utilidades.alertaCampoVacio(vista.campoNombre);
+                } else if (utilidades.campoVacio(vista.campoAutor)) {
+                    utilidades.alertaCampoVacio(vista.campoAutor);
+                } else if (utilidades.fechaVacia(vista.datePicker)) {
+                    utilidades.alertaFechaVacia(vista.datePicker);
+                } else if (utilidades.campoVacio(vista.campoEditorial)) {
+                    utilidades.alertaCampoVacio(vista.campoEditorial);
+                } else {
+                    String disponible = vista.siDisponibleRadioButton.isSelected() ? "Si" : "No";
+                    if (vista.radioLibro.isSelected()) {
+                        if (utilidades.campoVacio(vista.campoGeneral)) {
+                            utilidades.alertaCampoVacio(vista.campoGeneral);
+                        } else {
+                            modelo.altaLibro(vista.campoNombre.getText(), vista.campoAutor.getText(), (int) (vista.SpinnerNumPag.getValue()), vista.datePicker.getDate(), vista.campoEditorial.getText(),
+                                    vista.comboIdiomas.getSelectedItem().toString(), (int) vista.spinnerNumEdicion.getValue(), disponible, vista.campoGeneral.getText());
 
+                        }
+                    } else if (vista.radioComic.isSelected()) {
+                        if (utilidades.campoVacio(vista.campoGeneral)) {
+                            utilidades.alertaCampoVacio(vista.campoGeneral);
+                        } else {
+                            modelo.altaComic(vista.campoNombre.getText(), vista.campoAutor.getText(), (int) (vista.SpinnerNumPag.getValue()), vista.datePicker.getDate(), vista.campoEditorial.getText(),
+                                    vista.comboIdiomas.getSelectedItem().toString(), (int) vista.spinnerNumEdicion.getValue(), disponible, vista.campoGeneral.getText());
 
+                        }
+                    } else if (vista.radioManga.isSelected()) {
+                        if (utilidades.campoVacio(vista.campoGeneral)) {
+                            utilidades.alertaCampoVacio(vista.campoGeneral);
+                        } else {
+                            modelo.altaManga(vista.campoNombre.getText(), vista.campoAutor.getText(), (int) (vista.SpinnerNumPag.getValue()), vista.datePicker.getDate(), vista.campoEditorial.getText(),
+                                    vista.comboIdiomas.getSelectedItem().toString(), (int) vista.spinnerNumEdicion.getValue(), disponible, vista.campoGeneral.getText());
+
+                        }
+                    } else if (vista.radioPoesia.isSelected()) {
+                        if (utilidades.campoVacio(vista.campoGeneral)) {
+                            utilidades.alertaCampoVacio(vista.campoGeneral);
+                        } else {
+                            modelo.altaPoesia(vista.campoNombre.getText(), vista.campoAutor.getText(), (int) (vista.SpinnerNumPag.getValue()), vista.datePicker.getDate(), vista.campoEditorial.getText(),
+                                    vista.comboIdiomas.getSelectedItem().toString(), (int) vista.spinnerNumEdicion.getValue(), disponible, vista.campoGeneral.getText());
+
+                        }
+                    } else if (vista.radioRevista.isSelected()) {
+                        if (utilidades.campoVacio(vista.campoGeneral)) {
+                            utilidades.alertaCampoVacio(vista.campoGeneral);
+                        } else {
+                            modelo.altaRevista(vista.campoNombre.getText(), vista.campoAutor.getText(), (int) (vista.SpinnerNumPag.getValue()), vista.datePicker.getDate(), vista.campoEditorial.getText(),
+                                    vista.comboIdiomas.getSelectedItem().toString(), (int) vista.spinnerNumEdicion.getValue(), disponible, vista.campoGeneral.getText());
+
+                        }
+                    }
+                    refrescar();
+                    limpiarCampos();
+                    break;
+                }
+            case "Importar":
+                JFileChooser selectorFichero = Utilidades.crearSelectorFichero(ultimaRutaExportada, "Archivo XML", "xml");
+                int opt = selectorFichero.showOpenDialog(null);
+                if (opt == JFileChooser.APPROVE_OPTION) {
+                    try {
+                        modelo.importarXML(selectorFichero.getSelectedFile());
+                    } catch (ParserConfigurationException ex) {
+                        ex.printStackTrace();
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                    } catch (SAXException ex) {
+                        ex.printStackTrace();
+                    }
+                    refrescar();
+                    limpiarCampos();
+                    break;
+                }
+            case "Exportar":
+                JFileChooser selectorFichero2 = Utilidades.crearSelectorFichero(ultimaRutaExportada, "Archivo XML", "xml");
+                int opt2 = selectorFichero2.showOpenDialog(null);
+                if (opt2 == JFileChooser.APPROVE_OPTION) {
+                    try {
+                        modelo.ExportarXML(selectorFichero2.getSelectedFile());
+                        actualizarDatosConfiguracion(selectorFichero2.getSelectedFile());
+                        break;
+                    } catch (ParserConfigurationException ex) {
+                        ex.printStackTrace();
+                    } catch (TransformerException ex) {
+                        ex.printStackTrace();
+                    }
+                    limpiarCampos();
+                    break;
+
+                }
         }
 
+    }
+
+
+
+    private void refrescar() {
+        vista.dlmLectura.clear();
+        for (Lectura lectura: modelo.obtenerLecturas()) {
+            vista.dlmLectura.addElement(lectura);
+        }
+    }
+
+    private void limpiarCampos() {
+        vista.campoNombre.setText("");
+        vista.campoAutor.setText("");
+        vista.SpinnerNumPag.setValue(0);
+        vista.datePicker.setDate(null);
+        vista.campoEditorial.setText("");
+        vista.comboIdiomas.setSelectedIndex(0);
+        vista.spinnerNumEdicion.setValue(0);
+        vista.siDisponibleRadioButton.setSelected(true);
+        vista.campoGeneral.setText("");
     }
 
     @Override
