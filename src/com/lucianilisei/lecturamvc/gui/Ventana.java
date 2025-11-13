@@ -49,8 +49,12 @@ public class Ventana {
     private void initComponents() {
         dlmLectura = new DefaultListModel<Lectura>();
         list1.setModel(dlmLectura);
+
         radioLibro.setSelected(true);
         siDisponibleRadioButton.setSelected(true);
+
+        SpinnerNumPag.setModel(new SpinnerNumberModel(1, 1, 10000, 1));
+        spinnerNumEdicion.setModel(new SpinnerNumberModel(1, 1, 10000, 1));
 
         String [] idiomas = {"Español", "Inglés", "Francés"};
         for (String idioma: idiomas) {
