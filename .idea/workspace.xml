@@ -3,9 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="47f2892c-2b9f-46bd-9a1e-350cea7b9e2f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lecturas.conf" beforeDir="false" afterPath="$PROJECT_DIR$/lecturas.conf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Practica1UD1LucianIlisei/com/lucianilisei/lecturamvc/gui/LecturasControlador.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Practica1UD1LucianIlisei/com/lucianilisei/lecturamvc/gui/LecturasControlador.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/lucianilisei/lecturamvc/gui/LecturasControlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/lucianilisei/lecturamvc/gui/LecturasControlador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/lucianilisei/lecturamvc/gui/Ventana.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/lucianilisei/lecturamvc/gui/Ventana.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/lucianilisei/lecturamvc/gui/Ventana.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/lucianilisei/lecturamvc/gui/Ventana.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/lucianilisei/lecturamvc/util/Utilidades.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/lucianilisei/lecturamvc/util/Utilidades.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

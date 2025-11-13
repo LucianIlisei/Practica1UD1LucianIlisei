@@ -52,6 +52,9 @@ public class LecturasControlador implements ActionListener, WindowListener, List
     }
 
     private void guardarConfiguracion() throws IOException {
+        if (ultimaRutaExportada == null) {
+            return;
+        }
         Properties configuracion = new Properties();
         configuracion.setProperty("ultimaRutaExportada", ultimaRutaExportada.getAbsolutePath());
         configuracion.store(new PrintWriter("lecturas.conf"), "Datos configuración lecturas");
@@ -252,22 +255,30 @@ public class LecturasControlador implements ActionListener, WindowListener, List
     private void limpiarCampos() {
         vista.campoNombre.setText("");
         vista.campoAutor.setText("");
-        vista.SpinnerNumPag.setValue(0);
+        vista.SpinnerNumPag.setValue(1);
         vista.datePicker.setDate(null);
         vista.campoEditorial.setText("");
         vista.comboIdiomas.setSelectedIndex(0);
-        vista.spinnerNumEdicion.setValue(0);
+        vista.spinnerNumEdicion.setValue(1);
         vista.siDisponibleRadioButton.setSelected(true);
         vista.campoGeneral.setText("");
     }
 
     @Override
-    public void windowOpened(WindowEvent windowEvent) {
-
+    public void windowClosing(WindowEvent e) {
+        int resp = utilidades.mensajeConfirmacion("¿Quiere cerrar la ventana?", "Exit");
+        if (resp == JOptionPane.OK_OPTION) {
+            try {
+                guardarConfiguracion();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+            System.exit(0);
+        }
     }
 
     @Override
-    public void windowClosing(WindowEvent windowEvent) {
+    public void windowOpened(WindowEvent windowEvent) {
 
     }
 

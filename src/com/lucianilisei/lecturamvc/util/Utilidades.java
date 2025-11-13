@@ -23,6 +23,7 @@ public class Utilidades {
         JOptionPane.showMessageDialog(null, "El campo " + campo.getName() + " no puede estar vacio.");
     }
 
+
     public static JFileChooser crearSelectorFichero(File rutaDefecto, String tipoArchivo, String extension) {
         JFileChooser selectorFichero = new JFileChooser();
         if (rutaDefecto != null) {
@@ -33,5 +34,9 @@ public class Utilidades {
             selectorFichero.setFileFilter(filtro);
         }
         return selectorFichero;
+    }
+
+    public static int mensajeConfirmacion(String mensaje,String titulo) {
+        return JOptionPane.showConfirmDialog(null,mensaje,titulo,JOptionPane.YES_NO_OPTION);
     }
 }
