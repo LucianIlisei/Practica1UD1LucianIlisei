@@ -26,27 +26,27 @@ public class LecturasModelo {
         return listaLectura;
     }
 
-    public void altaLibro(String nombre, String autor, int numPaginas, LocalDate fechaLanzamiento, String editorial, String idioma, int numEdicion, boolean disponible, double precio) {
+    public void altaLibro(String nombre, String autor, int numPaginas, LocalDate fechaLanzamiento, String editorial, String idioma, int numEdicion, String disponible, String precio) {
         Libro libro = new Libro(nombre, autor, numPaginas, fechaLanzamiento, editorial, idioma, numEdicion, disponible, precio);
         listaLectura.add(libro);
     }
 
-    public void altaComic(String nombre, String autor, int numPaginas, LocalDate fechaLanzamiento, String editorial, String idioma, int numEdicion, boolean disponible, String ilustrador) {
+    public void altaComic(String nombre, String autor, int numPaginas, LocalDate fechaLanzamiento, String editorial, String idioma, int numEdicion, String disponible, String ilustrador) {
         Comic comic = new Comic(nombre, autor, numPaginas, fechaLanzamiento, editorial, idioma, numEdicion, disponible, ilustrador);
         listaLectura.add(comic);
     }
 
-    public void altaManga(String nombre, String autor, int numPaginas, LocalDate fechaLanzamiento, String editorial, String idioma, int numEdicion, boolean disponible, String paisOrigen) {
+    public void altaManga(String nombre, String autor, int numPaginas, LocalDate fechaLanzamiento, String editorial, String idioma, int numEdicion, String disponible, String paisOrigen) {
         Manga manga = new Manga(nombre, autor, numPaginas, fechaLanzamiento, editorial, idioma, numEdicion,disponible, paisOrigen);
-        listaLectura. add(manga);
+        listaLectura.add(manga);
     }
 
-    public void altaPoesia(String nombre, String autor, int numPaginas, LocalDate fechaLanzamiento, String editorial, String idioma, int numEdicion, boolean disponible, String estilo) {
+    public void altaPoesia(String nombre, String autor, int numPaginas, LocalDate fechaLanzamiento, String editorial, String idioma, int numEdicion, String disponible, String estilo) {
         Poesia poesia = new Poesia(nombre, autor, numPaginas, fechaLanzamiento, editorial, idioma, numEdicion, disponible, estilo);
         listaLectura.add(poesia);
     }
 
-    public void altaRevista(String nombre, String autor, int numPaginas, LocalDate fechaLanzamiento, String editorial, String idioma, int numEdicion, boolean disponible, String temaPrincipal) {
+    public void altaRevista(String nombre, String autor, int numPaginas, LocalDate fechaLanzamiento, String editorial, String idioma, int numEdicion, String disponible, String temaPrincipal) {
         Revista revista = new Revista(nombre, autor, numPaginas, fechaLanzamiento, editorial, idioma, numEdicion, disponible, temaPrincipal);
         listaLectura.add(revista);
     }
@@ -131,14 +131,14 @@ public class LecturasModelo {
             nodoDatos = documento.createElement("disponible");
             nodoLectura.appendChild(nodoDatos);
 
-            texto = documento.createTextNode(String.valueOf(lectura.isDisponible()));
+            texto = documento.createTextNode(String.valueOf(lectura.getDisponible()));
             nodoDatos.appendChild(texto);
 
             if (lectura instanceof Libro) {
                 nodoDatos = documento.createElement("precio");
                 nodoLectura.appendChild(nodoDatos);
 
-                texto = documento.createTextNode(String.valueOf(((Libro) lectura).getPrecio()));
+                texto = documento.createTextNode(String.valueOf(((Libro) lectura).getGenero()));
                 nodoDatos.appendChild(texto);
             } else if (lectura instanceof Comic) {
                 nodoDatos = documento.createElement("ilustrador");
@@ -201,8 +201,8 @@ public class LecturasModelo {
                 nuevoLibro.setEditorial(nodoLectura.getChildNodes().item(4).getTextContent());
                 nuevoLibro.setIdioma(nodoLectura.getChildNodes().item(5).getTextContent());
                 nuevoLibro.setNumEdicion(Integer.parseInt(nodoLectura.getChildNodes().item(6).getTextContent()));
-                nuevoLibro.setDisponible(Boolean.parseBoolean(nodoLectura.getChildNodes().item(7).getTextContent()));
-                nuevoLibro.setPrecio(Double.parseDouble(nodoLectura.getChildNodes().item(8).getTextContent()));
+                nuevoLibro.setDisponible(nodoLectura.getChildNodes().item(7).getTextContent());
+                nuevoLibro.setGenero(nodoLectura.getChildNodes().item(8).getTextContent());
                 listaLectura.add(nuevoLibro);
             } else if (nodoLectura.getTagName().equals("Comic")) {
                 nuevoComic = new Comic();
@@ -213,7 +213,7 @@ public class LecturasModelo {
                 nuevoComic.setEditorial(nodoLectura.getChildNodes().item(4).getTextContent());
                 nuevoComic.setIdioma(nodoLectura.getChildNodes().item(5).getTextContent());
                 nuevoComic.setNumEdicion(Integer.parseInt(nodoLectura.getChildNodes().item(6).getTextContent()));
-                nuevoComic.setDisponible(Boolean.parseBoolean(nodoLectura.getChildNodes().item(7).getTextContent()));
+                nuevoComic.setDisponible(nodoLectura.getChildNodes().item(7).getTextContent());
                 nuevoComic.setIlustrador(nodoLectura.getChildNodes().item(8).getTextContent());
                 listaLectura.add(nuevoComic);
             } else if (nodoLectura.getTagName().equals("Manga")) {
@@ -225,7 +225,7 @@ public class LecturasModelo {
                 nuevoManga.setEditorial(nodoLectura.getChildNodes().item(4).getTextContent());
                 nuevoManga.setIdioma(nodoLectura.getChildNodes().item(5).getTextContent());
                 nuevoManga.setNumEdicion(Integer.parseInt(nodoLectura.getChildNodes().item(6).getTextContent()));
-                nuevoManga.setDisponible(Boolean.parseBoolean(nodoLectura.getChildNodes().item(7).getTextContent()));
+                nuevoManga.setDisponible(nodoLectura.getChildNodes().item(7).getTextContent());
                 nuevoManga.setPaisOrigen(nodoLectura.getChildNodes().item(8).getTextContent());
                 listaLectura.add(nuevoManga);
             } else if (nodoLectura.getTagName().equals("Poesia")) {
@@ -237,7 +237,7 @@ public class LecturasModelo {
                 nuevaPoesia.setEditorial(nodoLectura.getChildNodes().item(4).getTextContent());
                 nuevaPoesia.setIdioma(nodoLectura.getChildNodes().item(5).getTextContent());
                 nuevaPoesia.setNumEdicion(Integer.parseInt(nodoLectura.getChildNodes().item(6).getTextContent()));
-                nuevaPoesia.setDisponible(Boolean.parseBoolean(nodoLectura.getChildNodes().item(7).getTextContent()));
+                nuevaPoesia.setDisponible(nodoLectura.getChildNodes().item(7).getTextContent());
                 nuevaPoesia.setEstilo(nodoLectura.getChildNodes().item(8).getTextContent());
                 listaLectura.add(nuevaPoesia);
             } else if (nodoLectura.getTagName().equals("Revista")) {
@@ -249,7 +249,7 @@ public class LecturasModelo {
                 nuevaRevista.setEditorial(nodoLectura.getChildNodes().item(4).getTextContent());
                 nuevaRevista.setIdioma(nodoLectura.getChildNodes().item(5).getTextContent());
                 nuevaRevista.setNumEdicion(Integer.parseInt(nodoLectura.getChildNodes().item(6).getTextContent()));
-                nuevaRevista.setDisponible(Boolean.parseBoolean(nodoLectura.getChildNodes().item(7).getTextContent()));
+                nuevaRevista.setDisponible(nodoLectura.getChildNodes().item(7).getTextContent());
                 nuevaRevista.setTemaPrincipal(nodoLectura.getChildNodes().item(8).getTextContent());
                 listaLectura.add(nuevaRevista);
             }

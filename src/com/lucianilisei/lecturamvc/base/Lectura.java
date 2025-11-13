@@ -10,13 +10,13 @@ public class Lectura {
     private String editorial;
     private String idioma;
     private int numEdicion;
-    private boolean disponible;
+    private String disponible;
 
     public Lectura() {
 
     }
 
-    public Lectura(String nombre, String autor, int numPaginas, LocalDate fechaLanzamiento, String editorial, String idioma, int numEdicion, boolean disponible) {
+    public Lectura(String nombre, String autor, int numPaginas, LocalDate fechaLanzamiento, String editorial, String idioma, int numEdicion, String disponible) {
         this.nombre = nombre;
         this.autor = autor;
         this.numPaginas = numPaginas;
@@ -83,11 +83,11 @@ public class Lectura {
         this.numEdicion = numEdicion;
     }
 
-    public boolean isDisponible() {
+    public String getDisponible() {
         return disponible;
     }
 
-    public void setDisponible(boolean disponible) {
+    public void setDisponible(String disponible) {
         this.disponible = disponible;
     }
 }

@@ -87,7 +87,7 @@
           <forms/>
         </constraints>
         <properties>
-          <text value="Poesía"/>
+          <text value="Poesia"/>
         </properties>
       </component>
       <component id="10a55" class="javax.swing.JRadioButton" binding="radioRevista">
@@ -248,7 +248,7 @@
           <forms/>
         </constraints>
         <properties>
-          <text value="Precio"/>
+          <text value="Género"/>
         </properties>
       </component>
       <component id="72eea" class="javax.swing.JButton" binding="botonNuevo">

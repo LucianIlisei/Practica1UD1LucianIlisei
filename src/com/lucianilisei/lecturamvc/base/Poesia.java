@@ -9,7 +9,7 @@ public class Poesia extends Lectura{
         super();
     }
 
-    public Poesia(String nombre, String autor, int numPaginas, LocalDate fechaLanzamiento, String editorial, String idioma, int numEdicion, boolean disponible, String estilo) {
+    public Poesia(String nombre, String autor, int numPaginas, LocalDate fechaLanzamiento, String editorial, String idioma, int numEdicion, String disponible, String estilo) {
         super(nombre, autor, numPaginas, fechaLanzamiento, editorial, idioma, numEdicion, disponible);
         this.estilo = estilo;
     }

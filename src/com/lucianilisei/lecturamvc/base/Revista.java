@@ -9,7 +9,7 @@ public class Revista extends Lectura{
         super();
     }
 
-    public Revista(String nombre, String autor, int numPaginas, LocalDate fechaLanzamiento, String editorial, String idioma, int numEdicion, boolean disponible, String temaPrincipal) {
+    public Revista(String nombre, String autor, int numPaginas, LocalDate fechaLanzamiento, String editorial, String idioma, int numEdicion, String disponible, String temaPrincipal) {
         super(nombre, autor, numPaginas, fechaLanzamiento, editorial, idioma, numEdicion, disponible);
         this.temaPrincipal = temaPrincipal;
     }

@@ -61,15 +61,15 @@ public class LecturasControlador implements ActionListener, WindowListener, List
             vista.campoEditorial.setText(lecturaSeleccionada.getEditorial());
             vista.comboIdiomas.setSelectedItem(lecturaSeleccionada.getIdioma());
             vista.spinnerNumEdicion.setValue(lecturaSeleccionada.getNumEdicion());
-            if (lecturaSeleccionada.isDisponible()) {
+            if (lecturaSeleccionada.getDisponible().equals("Si")) {
                 vista.siDisponibleRadioButton.setSelected(true);
             } else {
                 vista.noDisponibleRadioButton.setSelected(true);
             }
             if (lecturaSeleccionada instanceof Libro) {
                 vista.radioLibro.doClick();
-                vista.labelGeneral.setText("Precio");
-                vista.campoGeneral.setText(String.valueOf(((Libro) lecturaSeleccionada).getPrecio()));
+                vista.labelGeneral.setText("Género");
+                vista.campoGeneral.setText(((Libro) lecturaSeleccionada).getGenero());
             } else if (lecturaSeleccionada instanceof Comic) {
                 vista.radioComic.doClick();
                 vista.labelGeneral.setText("Ilustrador");
@@ -91,7 +91,50 @@ public class LecturasControlador implements ActionListener, WindowListener, List
     }
 
     @Override
-    public void actionPerformed(ActionEvent actionEvent) {
+    public void actionPerformed(ActionEvent e) {
+        String actionComand = e.getActionCommand();
+        System.out.println("Botón pulsado: " + actionComand);
+        switch (actionComand) {
+            case "Nuevo":
+                String disponible = vista.siDisponibleRadioButton.isSelected() ? "Si" : "No";
+                if (vista.radioLibro.isSelected()) {
+                    modelo.altaLibro(vista.campoNombre.getText(), vista.campoAutor.getText(), (int) (vista.SpinnerNumPag.getValue()), vista.datePicker.getDate(), vista.campoEditorial.getText(),
+                            vista.comboIdiomas.getSelectedItem().toString(), (int) vista.spinnerNumEdicion.getValue(), disponible, vista.campoGeneral.getText());
+                } else if (vista.radioComic.isSelected()) {
+                    modelo.altaComic(vista.campoNombre.getText(), vista.campoAutor.getText(), (int) (vista.SpinnerNumPag.getValue()), vista.datePicker.getDate(), vista.campoEditorial.getText(),
+                            vista.comboIdiomas.getSelectedItem().toString(), (int) vista.spinnerNumEdicion.getValue(), disponible, vista.campoGeneral.getText());
+                } else if (vista.radioManga.isSelected()) {
+                    modelo.altaManga(vista.campoNombre.getText(), vista.campoAutor.getText(), (int) (vista.SpinnerNumPag.getValue()), vista.datePicker.getDate(), vista.campoEditorial.getText(),
+                            vista.comboIdiomas.getSelectedItem().toString(), (int) vista.spinnerNumEdicion.getValue(), disponible, vista.campoGeneral.getText());
+                } else if (vista.radioPoesia.isSelected()) {
+                    modelo.altaPoesia(vista.campoNombre.getText(), vista.campoAutor.getText(), (int) (vista.SpinnerNumPag.getValue()), vista.datePicker.getDate(), vista.campoEditorial.getText(),
+                            vista.comboIdiomas.getSelectedItem().toString(), (int) vista.spinnerNumEdicion.getValue(), disponible, vista.campoGeneral.getText());
+                } else if (vista.radioRevista.isSelected()) {
+                    modelo.altaRevista(vista.campoNombre.getText(), vista.campoAutor.getText(), (int) (vista.SpinnerNumPag.getValue()), vista.datePicker.getDate(), vista.campoEditorial.getText(),
+                            vista.comboIdiomas.getSelectedItem().toString(), (int) vista.spinnerNumEdicion.getValue(), disponible, vista.campoGeneral.getText());
+                }
+
+                refrescar();
+            case "Libro":
+                vista.labelGeneral.setText("Género");
+                vista.campoGeneral.setName("LIBRO");
+                break;
+            case "Comic":
+                vista.labelGeneral.setText("Ilustradór");
+                vista.campoGeneral.setName("ILUSTRADOR");
+                break;
+            case "Manga":
+                vista.labelGeneral.setText("Pais de origen");
+                vista.campoGeneral.setName("PAIS DE ORIGEN");
+            case "Poesia":
+                vista.labelGeneral.setText("Estilo");
+                vista.campoGeneral.setName("ESTILO");
+            case "Revista":
+                vista.labelGeneral.setText("Tema principal");
+                vista.campoGeneral.setName("TEMA PRINCIPAL");
+
+
+        }
 
     }
 

@@ -3,22 +3,22 @@ package com.lucianilisei.lecturamvc.base;
 import java.time.LocalDate;
 
 public class Libro extends Lectura{
-    private double precio;
+    private String genero;
 
     public Libro() {
         super();
     }
 
-    public Libro(String nombre, String autor, int numPaginas, LocalDate fechaLanzamiento, String editorial, String idioma, int numEdicion, boolean disponible, double precio) {
+    public Libro(String nombre, String autor, int numPaginas, LocalDate fechaLanzamiento, String editorial, String idioma, int numEdicion, String disponible, String genero) {
         super(nombre, autor, numPaginas, fechaLanzamiento, editorial, idioma, numEdicion, disponible);
-        this.precio = precio;
+        this.genero = genero;
     }
 
-    public double getPrecio() {
-        return precio;
+    public String getGenero() {
+        return genero;
     }
 
-    public void setPrecio(double precio) {
-        this.precio = precio;
+    public void setGenero(String genero) {
+        this.genero = genero;
     }
 }
