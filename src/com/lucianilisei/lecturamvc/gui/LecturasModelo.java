@@ -52,6 +52,16 @@ public class LecturasModelo {
         listaLectura.add(revista);
     }
 
+    public boolean existeNombreLectura(String nombreLectura) {
+        for (Lectura unVehiculo : listaLectura) {
+            if (unVehiculo.getNombre().equals(nombreLectura)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
     public void ExportarXML(File fichero) throws ParserConfigurationException, TransformerException {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
@@ -289,6 +299,29 @@ public class LecturasModelo {
                 "Error",
                 JOptionPane.ERROR_MESSAGE);
     }
+
+    public void editarLectura(Lectura lecturaEditando, String nombre, String autor, int numPaginas, LocalDate fecha, String editorial, String idioma, int numEdicion, String disponible, String general) {
+        lecturaEditando.setNombre(nombre);
+        lecturaEditando.setAutor(autor);
+        lecturaEditando.setNumPaginas(numPaginas);
+        lecturaEditando.setFechaLanzamiento(fecha);
+        lecturaEditando.setEditorial(editorial);
+        lecturaEditando.setIdioma(idioma);
+        lecturaEditando.setNumEdicion(numEdicion);
+        lecturaEditando.setDisponible(disponible);
+        if (lecturaEditando instanceof Libro) {
+            ((Libro) lecturaEditando).setGenero(general);
+        } else if (lecturaEditando instanceof Comic) {
+            ((Comic) lecturaEditando).setIlustrador(general);
+        } else if (lecturaEditando instanceof Manga) {
+            ((Manga) lecturaEditando).setPaisOrigen(general);
+        } else if (lecturaEditando instanceof Poesia) {
+            ((Poesia) lecturaEditando).setEstilo(general);
+        } else if (lecturaEditando instanceof Revista) {
+            ((Revista) lecturaEditando).setTemaPrincipal(general);
+        }
+    }
+
 
 
 }

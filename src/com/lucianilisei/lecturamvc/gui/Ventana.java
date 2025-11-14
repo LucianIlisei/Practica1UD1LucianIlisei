@@ -33,6 +33,7 @@ public class Ventana {
     public JLabel labelGeneral;
     public JTextField campoBuscar;
     public JButton botonBuscar;
+    public JButton botonEditar;
 
 
     public JFrame frame;

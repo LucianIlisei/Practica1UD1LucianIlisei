@@ -14,6 +14,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.*;
+import java.time.LocalDate;
 import java.util.Properties;
 
 public class LecturasControlador implements ActionListener, WindowListener, ListSelectionListener{
@@ -38,6 +39,7 @@ public class LecturasControlador implements ActionListener, WindowListener, List
         vista.botonExportar.addActionListener(listener);
         vista.botonImportar.addActionListener(listener);
         vista.botonBuscar.addActionListener(listener);
+        vista.botonEditar.addActionListener(listener);
         vista.radioLibro.addActionListener(listener);
         vista.radioComic.addActionListener(listener);
         vista.radioManga.addActionListener(listener);
@@ -158,6 +160,12 @@ public class LecturasControlador implements ActionListener, WindowListener, List
                         if (utilidades.campoVacio(vista.campoGeneral)) {
                             utilidades.alertaCampoVacio(vista.campoGeneral);
                             break;
+                        } else if (modelo.existeNombreLectura(vista.campoNombre.getText())) {
+                            JOptionPane.showMessageDialog(null,
+                                    "Ya existe el nombre, cambielo.",
+                                    "Error",
+                                    JOptionPane.ERROR_MESSAGE);
+                            break;
                         }
                         modelo.altaLibro(vista.campoNombre.getText(), vista.campoAutor.getText(), (int) (vista.SpinnerNumPag.getValue()), vista.datePicker.getDate(), vista.campoEditorial.getText(),
                                 vista.comboIdiomas.getSelectedItem().toString(), (int) vista.spinnerNumEdicion.getValue(), disponible, vista.campoGeneral.getText());
@@ -166,6 +174,12 @@ public class LecturasControlador implements ActionListener, WindowListener, List
                     } else if (vista.radioComic.isSelected()) {
                         if (utilidades.campoVacio(vista.campoGeneral)) {
                             utilidades.alertaCampoVacio(vista.campoGeneral);
+                            break;
+                        } else if (modelo.existeNombreLectura(vista.campoNombre.getText())) {
+                            JOptionPane.showMessageDialog(null,
+                                    "Ya existe el nombre, cambielo.",
+                                    "Error",
+                                    JOptionPane.ERROR_MESSAGE);
                             break;
                         }
                         modelo.altaComic(vista.campoNombre.getText(), vista.campoAutor.getText(), (int) (vista.SpinnerNumPag.getValue()), vista.datePicker.getDate(), vista.campoEditorial.getText(),
@@ -176,6 +190,12 @@ public class LecturasControlador implements ActionListener, WindowListener, List
                         if (utilidades.campoVacio(vista.campoGeneral)) {
                             utilidades.alertaCampoVacio(vista.campoGeneral);
                             break;
+                        } else if (modelo.existeNombreLectura(vista.campoNombre.getText())) {
+                            JOptionPane.showMessageDialog(null,
+                                    "Ya existe el nombre, cambielo.",
+                                    "Error",
+                                    JOptionPane.ERROR_MESSAGE);
+                            break;
                         }
                         modelo.altaManga(vista.campoNombre.getText(), vista.campoAutor.getText(), (int) (vista.SpinnerNumPag.getValue()), vista.datePicker.getDate(), vista.campoEditorial.getText(),
                                 vista.comboIdiomas.getSelectedItem().toString(), (int) vista.spinnerNumEdicion.getValue(), disponible, vista.campoGeneral.getText());
@@ -185,6 +205,12 @@ public class LecturasControlador implements ActionListener, WindowListener, List
                         if (utilidades.campoVacio(vista.campoGeneral)) {
                             utilidades.alertaCampoVacio(vista.campoGeneral);
                             break;
+                        } else if (modelo.existeNombreLectura(vista.campoNombre.getText())) {
+                            JOptionPane.showMessageDialog(null,
+                                    "Ya existe el nombre, cambielo.",
+                                    "Error",
+                                    JOptionPane.ERROR_MESSAGE);
+                            break;
                         }
                         modelo.altaPoesia(vista.campoNombre.getText(), vista.campoAutor.getText(), (int) (vista.SpinnerNumPag.getValue()), vista.datePicker.getDate(), vista.campoEditorial.getText(),
                                 vista.comboIdiomas.getSelectedItem().toString(), (int) vista.spinnerNumEdicion.getValue(), disponible, vista.campoGeneral.getText());
@@ -193,6 +219,12 @@ public class LecturasControlador implements ActionListener, WindowListener, List
                     } else if (vista.radioRevista.isSelected()) {
                         if (utilidades.campoVacio(vista.campoGeneral)) {
                             utilidades.alertaCampoVacio(vista.campoGeneral);
+                            break;
+                        } else if (modelo.existeNombreLectura(vista.campoNombre.getText())) {
+                            JOptionPane.showMessageDialog(null,
+                                    "Ya existe el nombre, cambielo.",
+                                    "Error",
+                                    JOptionPane.ERROR_MESSAGE);
                             break;
                         }
                         modelo.altaRevista(vista.campoNombre.getText(), vista.campoAutor.getText(), (int) (vista.SpinnerNumPag.getValue()), vista.datePicker.getDate(), vista.campoEditorial.getText(),
@@ -246,6 +278,47 @@ public class LecturasControlador implements ActionListener, WindowListener, List
             case "Buscar":
                 modelo.buscarLectura(vista.campoBuscar.getText());
                 break;
+            case "Editar":
+                if (lecturaEditando == null) {
+                    JOptionPane.showMessageDialog(null, "No hay ninguna lectura seleccionada", "Error", JOptionPane.ERROR_MESSAGE);
+                    break;
+                }
+                if (utilidades.campoVacio(vista.campoNombre)) {
+                    utilidades.alertaCampoVacio(vista.campoNombre);
+                    break;
+                } else if (utilidades.campoVacio(vista.campoAutor)) {
+                    utilidades.alertaCampoVacio(vista.campoAutor);
+                    break;
+                } else if (utilidades.fechaVacia(vista.datePicker)) {
+                    utilidades.alertaFechaVacia(vista.datePicker);
+                    break;
+                } else if (utilidades.campoVacio(vista.campoEditorial)) {
+                    utilidades.alertaCampoVacio(vista.campoEditorial);
+                    break;
+                } else if (modelo.existeNombreLectura(vista.campoNombre.getText())) {
+                    JOptionPane.showMessageDialog(null,
+                            "Ya existe el nombre, cambielo.",
+                            "Error",
+                            JOptionPane.ERROR_MESSAGE);
+                } else {
+                    String nombre = vista.campoNombre.getText();
+                    String autor = vista.campoAutor.getText();
+                    int numPag = (int) vista.SpinnerNumPag.getValue();
+                    LocalDate fecha = vista.datePicker.getDate();
+                    String editorial = vista.campoEditorial.getText();
+                    String idioma = vista.comboIdiomas.getSelectedItem().toString();
+                    int edicion = (int) vista.spinnerNumEdicion.getValue();
+                    String disponible = vista.siDisponibleRadioButton.isSelected() ? "Si" : "No";
+                    String campoGeneral = vista.campoGeneral.getText();
+
+                    modelo.editarLectura(lecturaEditando, nombre, autor, numPag, fecha, editorial, idioma, edicion, disponible, campoGeneral);
+
+                    refrescar();
+                    limpiarCampos();
+                    lecturaEditando = null;
+                    break;
+                }
+
         }
 
     }
