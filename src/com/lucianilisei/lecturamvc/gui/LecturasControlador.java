@@ -21,6 +21,7 @@ public class LecturasControlador implements ActionListener, WindowListener, List
     private LecturasModelo modelo;
     private Utilidades utilidades;
     private File ultimaRutaExportada;
+    private Lectura lecturaEditando;
 
     public LecturasControlador(Ventana vista, LecturasModelo modelo, Utilidades utilidades) {
         this.vista = vista;
@@ -36,6 +37,7 @@ public class LecturasControlador implements ActionListener, WindowListener, List
         vista.botonNuevo.addActionListener(listener);
         vista.botonExportar.addActionListener(listener);
         vista.botonImportar.addActionListener(listener);
+        vista.botonBuscar.addActionListener(listener);
         vista.radioLibro.addActionListener(listener);
         vista.radioComic.addActionListener(listener);
         vista.radioManga.addActionListener(listener);
@@ -74,6 +76,8 @@ public class LecturasControlador implements ActionListener, WindowListener, List
     public void valueChanged(ListSelectionEvent e) {
         if(e.getValueIsAdjusting()) {
             Lectura lecturaSeleccionada = (Lectura) vista.list1.getSelectedValue();
+            lecturaEditando = lecturaSeleccionada;
+
             vista.campoNombre.setText(lecturaSeleccionada.getNombre());
             vista.campoAutor.setText(lecturaSeleccionada.getAutor());
             vista.SpinnerNumPag.setValue(lecturaSeleccionada.getNumPaginas());
@@ -238,6 +242,9 @@ public class LecturasControlador implements ActionListener, WindowListener, List
                         ex.printStackTrace();
                     }
                 }
+                break;
+            case "Buscar":
+                modelo.buscarLectura(vista.campoBuscar.getText());
                 break;
         }
 

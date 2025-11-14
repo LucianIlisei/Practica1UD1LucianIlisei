@@ -4,6 +4,7 @@ import com.lucianilisei.lecturamvc.base.*;
 import org.w3c.dom.*;
 import org.xml.sax.SAXException;
 
+import javax.swing.*;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -255,5 +256,39 @@ public class LecturasModelo {
             }
         }
     }
+
+    public void buscarLectura(String nombreLectura) {
+        for (Lectura lectura : listaLectura) {
+            if (lectura.getNombre().equals(nombreLectura)) {
+                String mensaje =
+                        "Nombre: " + lectura.getNombre() +
+                                "\nAutor: " + lectura.getAutor() +
+                                "\nNúmero de páginas: " + lectura.getNumPaginas() +
+                                "\nFecha de lanzamiento: " + lectura.getFechaLanzamiento() +
+                                "\nEditorial: " + lectura.getEditorial() +
+                                "\nIdioma: " + lectura.getIdioma() +
+                                "\nNúmero de edición: " + lectura.getNumEdicion() +
+                                "\nDisponible: " + lectura.getDisponible();
+                if (lectura instanceof Libro) {
+                    mensaje += "\nGénero: " + ((Libro) lectura).getGenero();
+                } else if (lectura instanceof Comic) {
+                    mensaje += "\nIlustrador: " + ((Comic) lectura).getIlustrador();
+                } else if (lectura instanceof Manga) {
+                    mensaje += "\nPaís de origen: " + ((Manga) lectura).getPaisOrigen();
+                } else if (lectura instanceof Poesia) {
+                    mensaje += "\nEstilo: " + ((Poesia) lectura).getEstilo();
+                } else if (lectura instanceof Revista) {
+                    mensaje += "\nTema principal: " + ((Revista) lectura).getTemaPrincipal();
+                }
+                JOptionPane.showMessageDialog(null, mensaje, "Lectura encontrada", JOptionPane.INFORMATION_MESSAGE);
+                return;
+            }
+        }
+        JOptionPane.showMessageDialog(null,
+                "No se encontró ninguna lectura con ese nombre.",
+                "Error",
+                JOptionPane.ERROR_MESSAGE);
+    }
+
 
 }

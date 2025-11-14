@@ -6,10 +6,11 @@ import com.lucianilisei.lecturamvc.base.Lectura;
 import com.lucianilisei.lecturamvc.base.Libro;
 
 import javax.swing.*;
+import java.awt.*;
 import java.time.LocalDate;
 
 public class Ventana {
-    private JPanel panel1;
+    public JPanel panel1;
     public JRadioButton radioLibro;
     public JRadioButton radioComic;
     public JRadioButton radioManga;
@@ -30,18 +31,22 @@ public class Ventana {
     public JList list1;
     public JTextField campoGeneral;
     public JLabel labelGeneral;
+    public JTextField campoBuscar;
+    public JButton botonBuscar;
 
 
     public JFrame frame;
     public DefaultListModel<Lectura> dlmLectura;
 
     public Ventana() {
+
         frame = new JFrame("LecturaMVC");
         frame.setContentPane(panel1);
         frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
         frame.setLocationRelativeTo(null);
+        frame.setFocusTraversalPolicy(new DefaultFocusTraversalPolicy());
 
         initComponents();
     }
