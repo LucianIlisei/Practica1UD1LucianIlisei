@@ -295,7 +295,9 @@ public class LecturasControlador implements ActionListener, WindowListener, List
                 } else if (utilidades.campoVacio(vista.campoEditorial)) {
                     utilidades.alertaCampoVacio(vista.campoEditorial);
                     break;
-                } else if (modelo.existeNombreLectura(vista.campoNombre.getText())) {
+                } else if (utilidades.campoVacio(vista.campoGeneral)) {
+                    utilidades.alertaCampoVacio(vista.campoGeneral);
+                }   else if (modelo.existeNombreLectura(vista.campoNombre.getText())) {
                     JOptionPane.showMessageDialog(null,
                             "Ya existe el nombre, cambielo.",
                             "Error",
