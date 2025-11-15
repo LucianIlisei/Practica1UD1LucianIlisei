@@ -162,7 +162,7 @@ public class LecturasControlador implements ActionListener, WindowListener, List
                             break;
                         } else if (modelo.existeNombreLectura(vista.campoNombre.getText())) {
                             JOptionPane.showMessageDialog(null,
-                                    "Ya existe el nombre, cambielo.",
+                                    "El nombre utilizado ya existe, intentelo con otro.",
                                     "Error",
                                     JOptionPane.ERROR_MESSAGE);
                             break;
@@ -177,7 +177,7 @@ public class LecturasControlador implements ActionListener, WindowListener, List
                             break;
                         } else if (modelo.existeNombreLectura(vista.campoNombre.getText())) {
                             JOptionPane.showMessageDialog(null,
-                                    "Ya existe el nombre, cambielo.",
+                                    "El nombre utilizado ya existe, intentelo con otro.",
                                     "Error",
                                     JOptionPane.ERROR_MESSAGE);
                             break;
@@ -192,7 +192,7 @@ public class LecturasControlador implements ActionListener, WindowListener, List
                             break;
                         } else if (modelo.existeNombreLectura(vista.campoNombre.getText())) {
                             JOptionPane.showMessageDialog(null,
-                                    "Ya existe el nombre, cambielo.",
+                                    "El nombre utilizado ya existe, intentelo con otro.",
                                     "Error",
                                     JOptionPane.ERROR_MESSAGE);
                             break;
